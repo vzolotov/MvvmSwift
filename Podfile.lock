@@ -1,0 +1,42 @@
+PODS:
+  - Alamofire (4.8.2)
+  - DITranquillity (3.7.2):
+    - SwiftLazy
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Result (4.1.0)
+  - RxSwift (5.0.0)
+  - SwiftKeychainWrapper (3.4.0)
+  - SwiftLazy (1.1.3)
+
+DEPENDENCIES:
+  - DITranquillity
+  - Moya
+  - RxSwift
+  - SwiftKeychainWrapper
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - DITranquillity
+    - Moya
+    - Result
+    - RxSwift
+    - SwiftKeychainWrapper
+    - SwiftLazy
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  DITranquillity: eac3d90c40150159049e2d109d4108ee5ba5da18
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
+  SwiftLazy: 7ace993ccc9e1773ddf3a7bb309ed0182f469366
+
+PODFILE CHECKSUM: 6d758da97de4fb465f74dd807148bffd022a4380
+
+COCOAPODS: 1.5.3

@@ -7,15 +7,46 @@
 //
 
 import UIKit
+import DITranquillity
+
+func dilog(level: DILogLevel, msg: String) {
+    switch level {
+    case .error:
+        print("ERR: " + msg)
+    case .warning:
+        print("WRN: " + msg)
+    case .info:
+        print("INF: " + msg)
+    case .verbose, .none:
+        break
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    static let container = DIContainer()
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        DISetting.Log.fun = dilog
+        AppDelegate.container.append(framework: CoreFramework.self)
+        AppDelegate.container.append(framework: AppFramework.self)
+        
+        if !AppDelegate.container.validate() {
+            fatalError()
+        }
+        
+        AppDelegate.container.initializeSingletonObjects()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let routingService : RoutingService = AppDelegate.container.resolve()
+        let rootController = routingService.getFirstController()
+        AppDelegate.container.inject(into: rootController)
+        let navigationController = UINavigationController(rootViewController: rootController)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
         return true
     }
 
@@ -40,7 +71,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
